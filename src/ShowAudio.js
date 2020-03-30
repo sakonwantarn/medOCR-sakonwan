@@ -16,7 +16,7 @@ export default class showAudio extends Component {
     playAudio = async () => {
         const { Result } = this.props.route.params;
         result = Result;
-
+        
         //////unnessary to declare
         var audioData = await vajaAPI(result);
         console.log("audio result", audioData); // you get the audio files here looks >

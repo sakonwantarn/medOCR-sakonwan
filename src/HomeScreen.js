@@ -43,7 +43,8 @@ export default class HomeSreen extends Component {
         var string = "";
         string = processPictureManipulateBlock.text;
         console.log("typeof string var: " + typeof string);
-        string = string.split('\n');
+        string = string.split(/\s|\n/g);
+
         console.log("typeof string var: " + typeof string);
 
         this.searchYa(string);
@@ -55,13 +56,14 @@ export default class HomeSreen extends Component {
             stringArray[i] = stringArray[i].replace(/\W|[_]/g, '') // check again your regex syntax :)
             // 1) remove all unsued string that tarn doesnt want. 2) check it, if its empty skip it but if its available process it with scrapper and audio 
             if (stringArray[i] == '')
-                console.log("skip it Andre said") //its not a string so it will be
+                console.log("text unavailable") //its not a string so it will be
             else {
-                var result = await Scraper(stringArray[i])
+                var result = await Scraper(stringArray[i]) 
                 console.log(stringArray[i] + "with the result: " + result)
                 if (result != undefined || result != null)
                     console.log("available text")
-                    
+                    console.log("\ndrug name", stringArray)
+                   var result = "ชื่อยา"+" "+" "+stringArray[i]+ result;
               this.props.navigation.navigate('Audio', {
                   Result: result
 
